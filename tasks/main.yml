@@ -21,10 +21,5 @@
         name: "{{ base_user }}"
         groups: "{{ item }}"
         append: true
-      loop:
-        - sudo
-        - wheel
-        - adm
-        - systemd-journal
-        - sys
+      loop: "{{ base_groups + base_groups_extra }}"
       when: item in ansible_facts.getent_group
