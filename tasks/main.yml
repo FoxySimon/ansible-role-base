@@ -6,20 +6,20 @@
     create_home: "{{ base_user_create_home }}"
     state: "{{ base_user_state }}"
 
-- name: Add user to groups
-  when: base_user_state == "present"
-  ansible.builtin.user:
-    name: "{{ base_user }}"
-    groups: "{{ item }}"
-    append: true
-  loop: "{{ base_groups + base_groups_extra }}"
-  when: groups[item] is defined
+# - name: Add user to groups
+#   when: base_user_state == "present"
+#   ansible.builtin.user:
+#     name: "{{ base_user }}"
+#     groups: "{{ item }}"
+#     append: true
+#   loop: "{{ base_groups + base_groups_extra }}"
+#   when: groups[item] is defined
 
-- name: Configure sudo access
-  tags: base,base-sudo
-  community.general.sudoers:
-    name: "{{ base_user }}"
-    commands: "{{ base_sudo_commands }}"
-    user: "{{ base_user }}"
-    runas: "{{ base_sudo_runas }}"
+# - name: Configure sudo access
+#   tags: base,base-sudo
+#   community.general.sudoers:
+#     name: "{{ base_user }}"
+#     commands: "{{ base_sudo_commands }}"
+#     user: "{{ base_user }}"
+#     runas: "{{ base_sudo_runas }}"
 
