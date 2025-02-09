@@ -9,7 +9,12 @@ base_groups:
   - systemd-journal
   - sys
 
-base_groups_extra: []
+base_sudo_commands:
+  - ALL
+base_sudo_runas:
+  - ALL
 
-base_sudo_commands: ALL
-base_sudo_runas: ALL
+# Extra variables for customization
+base_groups_extra: []
+base_sudo_commands_extra: []
+base_sudo_runas_extra: []

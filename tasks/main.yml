@@ -23,3 +23,11 @@
         append: true
       loop: "{{ base_groups + base_groups_extra }}"
       when: item in ansible_facts.getent_group
+
+- name: Configure sudo access
+  tags: base,base-sudo
+  community.general.sudoers:
+    name: "{{ base_user }}"
+    commands: "{{ base_sudo_commands + base_sudo_commands_extra }}"
+    user: "{{ base_user }}"
+    runas: "{{ base_sudo_runas + base_sudo_runas_extra }}"
