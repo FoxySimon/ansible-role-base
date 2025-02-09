@@ -18,10 +18,6 @@ base_sudo_nopasswd_commands:
   - /usr/bin/apt upgrade *
   - /usr/bin/pacman -S *
   - /usr/bin/pacman -Syu
-base_sudo_runas:
-  - root
-
 # Extra variables for customization
 base_groups_extra: []
 base_sudo_nopasswd_commands_extra: []
-base_sudo_runas_extra: []
