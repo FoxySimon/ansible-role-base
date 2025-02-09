@@ -30,5 +30,6 @@
     name: "{{ base_user }}_nopasswd"
     commands: "{{ base_sudo_nopasswd_commands + base_sudo_nopasswd_commands_extra }}"
     user: "{{ base_user }}"
-    runas: "{{ base_sudo_runas + base_sudo_runas_extra }}"
+    runas: ALL
     nopassword: true
+    state: present
