@@ -1,0 +1,15 @@
+base_user: ansible
+base_user_create_home: false
+base_user_state: present
+
+base_groups:
+  - sudo
+  - wheel
+  - adm
+  - systemd-journal
+  - sys
+
+base_groups_extra: []
+
+base_sudo_commands: ALL
+base_sudo_runas: ALL
