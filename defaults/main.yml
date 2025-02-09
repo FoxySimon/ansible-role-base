@@ -1,4 +1,4 @@
-base_user: ansible
+base_user: ansible_operator
 base_user_create_home: false
 base_user_state: present
 
