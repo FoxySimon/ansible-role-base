@@ -2,7 +2,7 @@
 galaxy_info:
   author: Simon Hryszko
   description: Base role what will make user, configure groups, visudo etc.
-  license: license (MIT)
+  license: MIT
   min_ansible_version: "2.1"
   
   platforms:
