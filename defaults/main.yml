@@ -9,12 +9,19 @@ base_groups:
   - systemd-journal
   - sys
 
-base_sudo_commands:
-  - ALL
+base_sudo_nopasswd_commands:
+  - /usr/bin/dnf install *
+  - /usr/bin/dnf update *
+  - /usr/bin/dnf upgrade *
+  - /usr/bin/apt install *
+  - /usr/bin/apt update
+  - /usr/bin/apt upgrade *
+  - /usr/bin/pacman -S *
+  - /usr/bin/pacman -Syu
 base_sudo_runas:
-  - ALL
+  - root
 
 # Extra variables for customization
 base_groups_extra: []
-base_sudo_commands_extra: []
+base_sudo_nopasswd_commands_extra: []
 base_sudo_runas_extra: []
