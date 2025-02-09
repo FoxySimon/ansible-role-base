@@ -1,2 +1,2 @@
 # ansible-role-base
-Base role what can be required by other what make sure env is correct (like special usr is created) 
+Base role that can be required by others to ensure the environment is correctly configured (e.g., special user creation)
