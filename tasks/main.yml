@@ -6,20 +6,25 @@
     create_home: "{{ base_user_create_home }}"
     state: "{{ base_user_state }}"
 
-# - name: Add user to groups
-#   when: base_user_state == "present"
-#   ansible.builtin.user:
-#     name: "{{ base_user }}"
-#     groups: "{{ item }}"
-#     append: true
-#   loop: "{{ base_groups + base_groups_extra }}"
-#   when: groups[item] is defined
+- name: Add user to admin groups
+  when: base_user_state == "present"
+  block:
+    - name: Determine available groups
+      tags: base,base-groups
+      ansible.builtin.getent:
+        database: group
+      register: available_groups
 
-# - name: Configure sudo access
-#   tags: base,base-sudo
-#   community.general.sudoers:
-#     name: "{{ base_user }}"
-#     commands: "{{ base_sudo_commands }}"
-#     user: "{{ base_user }}"
-#     runas: "{{ base_sudo_runas }}"
-
+    - name: Add user to admin groups if they exist
+      tags: base,base-groups
+      ansible.builtin.user:
+        name: "{{ base_user }}"
+        groups: "{{ item }}"
+        append: true
+      loop:
+        - sudo
+        - wheel
+        - adm
+        - systemd-journal
+        - sys
+      when: item in ansible_facts.getent_group
