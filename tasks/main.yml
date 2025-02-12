@@ -33,18 +33,3 @@
     runas: ALL
     nopassword: true
     state: present
-
-- name: Configure ansible-pull cron job
-  when: base_cron_enabled | bool
-  ansible.builtin.cron:
-    name: "ansible-pull automatic update"
-    user: "{{ base_user }}"
-    minute: "{{ base_cron_schedule.split(' ')[0] }}"
-    hour: "{{ base_cron_schedule.split(' ')[1] }}"
-    day: "{{ base_cron_schedule.split(' ')[2] }}"
-    month: "{{ base_cron_schedule.split(' ')[3] }}"
-    weekday: "{{ base_cron_schedule.split(' ')[4] }}"
-    job: >-
-      /usr/bin/ansible-pull -U https://github.com/{{ base_cron_repo }} 
-      -C {{ base_cron_version }} {{ base_cron_playbook }}
-      2>&1 | logger -t {{ base_cron_tag }}
