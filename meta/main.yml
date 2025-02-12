@@ -25,4 +25,6 @@ galaxy_info:
     - security
     - configuration
 
-dependencies: []
+dependencies:
+  - src: https://github.com/willshersystems/ansible-sshd.git
+    name: willshersystems.sshd
