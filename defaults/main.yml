@@ -18,13 +18,6 @@ base_sudo_nopasswd_commands:
   - /usr/bin/apt upgrade *
   - /usr/bin/pacman -S *
   - /usr/bin/pacman -Syu
-# Cron configuration
-base_cron_enabled: true
-base_cron_schedule: "0 2 * * *"  # Run at 2 AM daily
-base_cron_playbook: "{{ ansible_hostname }}.yml"
-base_cron_repo: "FoxySimon/ansible-playbook-primary"
-base_cron_version: "main"
-base_cron_tag: "ansible-pull"
 
 # Extra variables for customization
 base_groups_extra: []
