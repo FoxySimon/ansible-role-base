@@ -33,32 +33,3 @@
     runas: ALL
     nopassword: true
     state: present
-
-- name: Check for existing SSH keys
-  tags: base,base-ssh
-  become_user: "{{ base_user }}"
-  ansible.builtin.stat:
-    path: "~/.ssh/id_ed25519"
-  register: ssh_key_file
-  changed_when: false
-  check_mode: false
-
-- name: Setup SSH key for user
-  tags: base,base-ssh
-  when: not ssh_key_file.stat.exists
-  block:
-    - name: Ensure .ssh directory exists
-      become: true
-      become_user: "{{ base_user }}"
-      ansible.builtin.file:
-        path: "~/.ssh"
-        state: directory
-        mode: '0700'
-
-    - name: Generate ED25519 SSH key
-      become: true
-      become_user: "{{ base_user }}"
-      ansible.builtin.command: >
-        ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519 -N "" -C "{{ base_user }}@{{ ansible_hostname }} (Ansible generated)"
-      args:
-        creates: "~/.ssh/id_ed25519"
