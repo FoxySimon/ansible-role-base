@@ -18,6 +18,7 @@ base_sudo_nopasswd_commands:
   - /usr/bin/apt upgrade *
   - /usr/bin/pacman -S *
   - /usr/bin/pacman -Syu
+  - /usr/bin/python3 *
 
 # Extra variables for customization
 base_groups_extra: []
