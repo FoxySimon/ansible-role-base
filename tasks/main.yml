@@ -28,7 +28,7 @@
   tags: base,base-sudo
   community.general.sudoers:
     name: "{{ base_user }}_nopasswd"
-    commands: "ALL"
+    commands: "{{ base_sudo_nopasswd_commands + base_sudo_nopasswd_commands_extra }}"
     user: "{{ base_user }}"
     runas: ALL
     nopassword: true
