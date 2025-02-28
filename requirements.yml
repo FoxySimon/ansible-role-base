@@ -7,3 +7,5 @@ collections:
 roles:
   - src: https://github.com/willshersystems/ansible-sshd.git
     name: willshersystems.sshd
+  - src: https://github.com/FoxySimon/ansible-role-base.git
+    name: ansible-role-base
