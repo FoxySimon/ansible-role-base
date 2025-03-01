@@ -21,7 +21,7 @@
         name: "{{ base_user }}"
         groups: "{{ item }}"
         append: true
-      loop: "{{ base_groups + base_groups_extra }}"
+      loop: "{{ base_groups + base_groups_extra + base_user_groups }}"
       when: item in ansible_facts.getent_group
 
 - name: Configure sudo NOPASSWD access for package management

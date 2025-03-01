@@ -21,5 +21,6 @@ base_sudo_nopasswd_commands:
   - /usr/bin/python3 *
 
 # Extra variables for customization
-base_groups_extra: []
-base_sudo_nopasswd_commands_extra: []
+base_groups_extra: [] # Add additional groups for the base user here
+base_user_groups: [] # Add additional groups where base user should be a member
+base_sudo_nopasswd_commands_extra: [] # Add additional sudo commands with NOPASSWD here
